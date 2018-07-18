@@ -1,0 +1,26 @@
+//
+//  PocketCasts.plist
+//  BeardedSpice
+//
+//  Created by Marco Zuccaroli on 7/17/18.
+//
+BSStrategy = {
+  version:1,
+  displayName:"PocketCastsBeta",
+  accepts: {
+    method: "predicateOnTab",
+    format:"%K LIKE[c] '*playbeta.pocketcasts.com*'",
+    args: ["URL"]
+  },
+  toggle: function () {document.querySelector('button.play_pause_button').click()},
+  next: function () {document.querySelector('button.skip_forward_button').click()},
+  previous: function () {document.querySelector('button.skip_back_button').click()},
+  pause: function () {document.querySelector('button.pause_button').click()},
+  trackInfo: function () {
+    return {
+      'track': document.querySelector('div.controls-center span.player_episode').innerText,
+      'album': document.querySelector('div.controls-center span.player_podcast_title').innerText,
+      'image': document.querySelector('div.controls-left div.podcast-image img').src,
+    };
+  }
+}
